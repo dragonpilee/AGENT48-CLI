@@ -52,11 +52,29 @@ Named as a tribute to the solid foundation of IBM's Granite models and the "grun
     cd GRNT-CODE
     ```
 
-2.  Build and launch the container:
+2.  **Build and Launch**:
     ```bash
     docker-compose build
-    docker-compose run grnt-code
+    docker-compose run --rm grnt-code
     ```
+
+3.  **External Terminal (Windows)**:
+    To launch in a dedicated PowerShell window:
+    ```powershell
+    start powershell "-NoExit -Command \"docker-compose run --rm grnt-code\""
+    ```
+
+---
+
+## 🕹️ Interactive Controls
+
+Once the agent is active, you can interact directly via the terminal:
+
+- **Prompt**: Use the `❯` prompt to give natural language instructions.
+- **Search**: "Search for all instances of 'GRNT' in the workspace."
+- **Execute**: "Run the application" or "Check the python version."
+- **Shortcuts**: Type `?` for a list of available command shortcuts.
+- **Exit**: Type `exit`, `quit`, or `bye` to end the session.
 
 ---
 
