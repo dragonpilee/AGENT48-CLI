@@ -1,43 +1,59 @@
 import click
+import os
 from rich.console import Console
-from rich.panel import Panel
+from rich.rule import Rule
 from .agent import Agent48
 
 console = Console()
 
-GRNT_ART = """
-   ______ ____   _   __ ______
-  / ____// __ \ / | / //_  __/
- / / __ / /_/ //  |/ /  / /   
-/ /_/ // _, _// /|  /  / /    
-\____//_/ |_|/_/ |_/  /_/     
-   ______ ____   ____   ______
-  / ____// __ \ / __ \ / ____/
- / /    / / / // / / // __/   
-/ /___ / /_/ // /_/ // /___   
-\____/ \____//_____//_____/   
+GRNT_LOGO = """
+  ▗▟██▙▖   [bold white]GRNT CODE v1.0.0[/bold white]
+ ▐██████▌  [dim]GPU-Ready Resilient Neural Terminal[/dim]
+  ▝▜██▛▘   [dim]{model} · {cwd}[/dim]
+   ▝▘▝▘
 """
 
 @click.command()
 @click.option('--model', default='granite4:3b', help='Ollama model to use')
 def main(model):
-    console.print(Panel(f"[bold cyan]{GRNT_ART}[/bold cyan]\n[bold white]GRNT CODE CLI[/bold white]\n[dim]Functional • Direct • Local[/dim]", expand=False))
-    console.print(f"Model: [cyan]{model}[/cyan]")
+    # Initial Launch Sequence
+    console.print("\n[bold white]Model Configuration[/bold white]\n")
+    console.print(f"Launching [bold cyan]GRNT CODE[/bold cyan] with [bold]{model}[/bold]...")
     
     agent = Agent48(model=model)
+    cwd = os.getcwd()
     
+    # Header Layout
+    console.print(GRNT_LOGO.format(model=model, cwd=cwd))
+    console.print(f"[dim]/model to try other local models[/dim]\n")
+    console.print(Rule(style="dim"))
+
     while True:
         try:
-            query = click.prompt("\n[bold cyan]PROMPT[/bold cyan] >")
+            # Main prompt style
+            query = click.prompt("❯", prompt_suffix=" ")
+            
             if query.lower() in ['exit', 'quit', 'bye']:
                 break
             
-            console.print("\n[bold green]Response:[/bold green]")
+            if query.lower() == '?':
+                console.print("\n[bold cyan]Shortcuts:[/bold cyan]")
+                console.print("  [bold]?[/bold]      Show shortcuts")
+                console.print("  [bold]exit[/bold]   End session\n")
+                continue
+
+            console.print(Rule(style="dim"))
+            
+            # Response streaming
             for chunk in agent.chat(query):
                 console.print(chunk, end="")
-            console.print("\n")
+            console.print("")
+            
+            console.print(Rule(style="dim"))
+            console.print("  [dim]? for shortcuts[/dim]")
             
         except KeyboardInterrupt:
+            console.print("\n[dim]Session terminated.[/dim]")
             break
         except Exception as e:
             console.print(f"[bold red]Error:[/bold red] {e}")

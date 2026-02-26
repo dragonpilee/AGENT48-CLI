@@ -1,9 +1,16 @@
+```
+  ▗▟██▙▖
+ ▐██████▌
+  ▝▜██▛▘
+   ▝▘▝▘
+```
+
 # GRNT CODE ⚡️
 > **High-Performance Local CLI Coding Agent**
 
 ![Status](https://img.shields.io/badge/Status-Production-success?style=for-the-badge) ![Docker](https://img.shields.io/badge/Deployment-Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white) ![Ollama](https://img.shields.io/badge/Engine-Ollama-000000?style=for-the-badge&logo=ollama&logoColor=white) ![Python](https://img.shields.io/badge/Language-Python_3.11-3776AB?style=for-the-badge&logo=python&logoColor=white)
 
-**GRNT CODE** is a specialized, high-performance, Docker-only CLI coding agent. It provides a surgical, minimal, and entirely local approach to coding tasks by interfacing with local LLMs via Ollama, optimized for the **Granite** family of models.
+**GRNT CODE** (**G**PU-Ready **R**esilient **N**eural **T**erminal) is a specialized, high-performance, Docker-only CLI coding agent. It provides a surgical, minimal, and entirely local approach to coding tasks by interfacing with local LLMs via Ollama, optimized for the **Granite** family of models.
 
 ---
 
