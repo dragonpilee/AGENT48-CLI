@@ -46,10 +46,16 @@ Named as a tribute to the solid foundation of IBM's Granite models and the "grun
 
 ### Quick Run (Cross-Platform)
 
-Simply run the script directly to auto-launch the Docker environment into your native terminal (iTerm2/Terminal on macOS, PowerShell on Windows, Gnome-Terminal/etc on Linux):
-```bash
-python src/main.py
-```
+Instantly launch the bot in a dedicated terminal window:
+
+- **Windows**: Double-click `grnt.bat` or run:
+  ```powershell
+  ./grnt.bat
+  ```
+- **Linux/macOS**: Run:
+  ```bash
+  ./grnt.sh
+  ```
 
 ### Manual Installation & Run
 
