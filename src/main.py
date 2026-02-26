@@ -1,5 +1,8 @@
 import os
 import sys
+from rich.console import Console
+
+console = Console()
 
 def is_docker():
     """Check if the current process is running inside a Docker container."""
@@ -24,19 +27,18 @@ def spawn_external_terminal(command):
                     os.system(f"{term} -e \"bash -c '{command}; exec bash'\"")
                 return
         # Fallback: just run in current session if no GUI terminal is found
-        print(f"No external terminal found. Running mission in current session...")
+        console.print(f"[yellow]No external terminal found. Running mission in current session...[/yellow]")
         os.system(command)
 
 if __name__ == "__main__":
     # If run on Host (Any OS), automatically spawn the external terminal with Docker
     if not is_docker():
-        print(f"Launching [bold cyan]GRNT CODE[/bold cyan] in external terminal...")
+        console.print(f"\nLaunching [bold cyan]GRNT CODE[/bold cyan] in external terminal...")
         docker_cmd = "docker-compose build; docker-compose run --rm grnt-code"
         spawn_external_terminal(docker_cmd)
         sys.exit(0)
 
 import click
-from rich.console import Console
 from rich.rule import Rule
 from .agent import Agent48
 
