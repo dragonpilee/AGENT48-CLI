@@ -1,0 +1,12 @@
+services:
+  agent48:
+    build: .
+    volumes:
+      - .:/app
+      - .:/workspace # This is where agent48 will look to edit files
+    environment:
+      - OLLAMA_HOST=host.docker.internal:11434
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    stdin_open: true
+    tty: true
