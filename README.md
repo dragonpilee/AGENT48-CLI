@@ -20,6 +20,8 @@ In the era of cloud-dominant AI, privacy and local performance often take a back
 
 Named as a tribute to the solid foundation of IBM's Granite models and the "grunt work" it handles for developers, this project is built for those who value **Functional, Direct, and Local** compute. No trackers, no latency, just raw GPU-accelerated coding. ⚡️
 
+Developed by **alan ctril sunny**, **GRNT CODE v1.0.0** is an operative that remembers its origin while delivering future-ready performance.
+
 **⭐ If you value local AI transparency, please star the repo and share it with the community!**
 
 ---
