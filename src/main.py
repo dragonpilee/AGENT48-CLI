@@ -9,15 +9,27 @@ def is_docker():
     return os.path.exists('/.dockerenv') or os.path.exists('/run/.containerenv')
 
 def spawn_external_terminal(command):
-    """Spawns a new terminal window based on the OS."""
+    """Spawns a new terminal window based on the OS with multi-terminal support."""
+    cwd = os.getcwd()
     if os.name == 'nt':
         # Windows
         os.system(f'start powershell "-NoExit -Command \\"{command}\\""')
     elif sys.platform == 'darwin':
-        # macOS
-        os.system(f"osascript -e 'tell application \"Terminal\" to do script \"cd {os.getcwd()} && {command}\"'")
+        # macOS: Try iTerm2 first, then system Terminal
+        iterm_check = "osascript -e 'id of application \"iTerm\"' > /dev/null 2>&1"
+        if os.system(iterm_check) == 0:
+            iterm_script = f'tell application "iTerm" to create window with default profile command "bash -c \\"cd {cwd} && {command}; exec bash\\""'
+            os.system(f"osascript -e '{iterm_script}'")
+        else:
+            terminal_script = f'tell application "Terminal" to do script "cd {cwd} && {command}"'
+            os.system(f"osascript -e '{terminal_script}'")
     else:
-        # Linux - try common terminals
+        # Linux: Try standard x-terminal-emulator first
+        if os.system("which x-terminal-emulator > /dev/null 2>&1") == 0:
+            os.system(f"x-terminal-emulator -e \"bash -c '{command}; exec bash'\"")
+            return
+            
+        # Try common terminals
         terminals = ['gnome-terminal', 'konsole', 'xfce4-terminal', 'xterm', 'terminator']
         for term in terminals:
             if os.system(f"which {term} > /dev/null 2>&1") == 0:
@@ -26,7 +38,7 @@ def spawn_external_terminal(command):
                 else:
                     os.system(f"{term} -e \"bash -c '{command}; exec bash'\"")
                 return
-        # Fallback: just run in current session if no GUI terminal is found
+        # Fallback
         console.print(f"[yellow]No external terminal found. Running mission in current session...[/yellow]")
         os.system(command)
 
