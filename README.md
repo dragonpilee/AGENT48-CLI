@@ -1,64 +1,87 @@
-# GRNT CODE
+# GRNT CODE ⚡️
+> **High-Performance Local CLI Coding Agent**
 
-```
-   ______ ____   _   __ ______
-  / ____// __ \ / | / //_  __/
- / / __ / /_/ //  |/ /  / /   
-/ /_/ // _, _// /|  /  / /    
-\____//_/ |_|/_/ |_/  /_/     
-   ______ ____   ____   ______
-  / ____// __ \ / __ \ / ____/
- / /    / / / // / / // __/   
-/ /___ / /_/ // /_/ // /___   
-\____/ \____//_____//_____/   
-```
+![Status](https://img.shields.io/badge/Status-Production-success?style=for-the-badge) ![Docker](https://img.shields.io/badge/Deployment-Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white) ![Ollama](https://img.shields.io/badge/Engine-Ollama-000000?style=for-the-badge&logo=ollama&logoColor=white) ![Python](https://img.shields.io/badge/Language-Python_3.11-3776AB?style=for-the-badge&logo=python&logoColor=white)
 
-**GRNT CODE** is a specialized, high-performance, Docker-only CLI coding agent.
- It provides a surgical approach to coding tasks by interfacing with local LLMs via Ollama.
-
-## Features
-
-- **Tactical Performance**:
-    - **Streaming Responses**: Real-time generation for a faster feel.
-    - **Persistent Memory**: Saves history in `.grnt_code_history.json` so you can resume sessions.
-    - **Search Engine**: New `search_files` tool for finding code patterns instantly.
-    - **Manual Confirmation**: Built-in safety for terminal commands.
-- **Direct Persona**: A clean, professional system prompt focused on code.
-- **Ollama Integration**: Uses locally hosted models (defaults to `granite4:3b`).
-- **Modern TUI**: A beautiful terminal interface with clean block ASCII art.
-
-## Prerequisites
-
-- [Docker](https://www.docker.com/) and Docker Compose.
-- [Ollama](https://ollama.com/) running on your host machine.
-
-## Getting Started
-
-1. **Verify Ollama is running**:
-   Ensure `ollama serve` is active and you have the `granite4:3b` model downloaded (`ollama pull granite4:3b`).
-
-2. **Clone and Build**:
-   ```powershell
-   docker-compose build
-   ```
-
-3. **Deploy the Agent**:
-   ```powershell
-   docker-compose run grnt-code
-   ```
-
-## Usage
-
-Once active, use the `PROMPT >` to give instructions.
-
-- **Filesystem**: "List the files in the src folder" or "Read main.py".
-- **Creation**: "Create a new Python script that calculates fibonacci numbers".
-- **Execution**: "Run the tests" or "Check the python version".
-
-You can specify a different model at runtime:
-```powershell
-docker-compose run grnt-code --model llama3.2:3b
-```
+**GRNT CODE** is a specialized, high-performance, Docker-only CLI coding agent. It provides a surgical, minimal, and entirely local approach to coding tasks by interfacing with local LLMs via Ollama, optimized for the **Granite** family of models.
 
 ---
-*Functional. Direct. Local.*
+
+## 💭 The Story Behind This Project
+
+In the era of cloud-dominant AI, privacy and local performance often take a backseat. **GRNT CODE** was born from a desire to reclaim the developer's terminal—creating a tool that feels as powerful as Claude Code but runs entirely on your own silicon.
+
+Named as a tribute to the solid foundation of IBM's Granite models and the "grunt work" it handles for developers, this project is built for those who value **Functional, Direct, and Local** compute. No trackers, no latency, just raw GPU-accelerated coding. ⚡️
+
+**⭐ If you value local AI transparency, please star the repo and share it with the community!**
+
+---
+
+## ✨ Features
+
+- **🌊 Persistent Memory Engine**: GRNT CODE saves every mission's context into `.grnt_code_history.json`. Exit, restart, and pick up exactly where you left off.
+- **🚀 Optimistic Streaming**: Real-time token generation ensures a fluid, responsive experience. No more waiting for the full response to render.
+- **🔍 Surgical Search Tool**: A high-speed `search_files` (grep-powered) tool allows the agent to scan your entire workspace for patterns instantly.
+- **🛡️ Manual Confirmation Safety**: Built-in security that mandates user approval (`Y/n`) before any terminal command is executed on your workspace.
+- **⚡ Hardware Accelerated**: Optimized for local GPU execution via Ollama, ensuring minimal latency and high-speed tool calling.
+- **🎨 Premium Block TUI**: A beautiful, minimalist terminal interface with custom ASCII art and a focused `PROMPT >` workflow.
+- **📱 Docker-Only Deployment**: Zero-configuration setup. Your host stays clean; the agent lives in a high-performance container.
+
+---
+
+## 🚀 Quick Start
+
+### Prerequisites
+
+1.  **Docker Desktop**: Ensure Docker is installed and running.
+2.  **Ollama**: Ensure [Ollama](https://ollama.com/) is running on your host machine.
+3.  **Model**: Pull the recommended model: `ollama pull granite4:3b`
+
+### Installation & Run
+
+1.  Clone the repository:
+    ```bash
+    git clone https://github.com/dragonpilee/GRNT-CODE.git
+    cd GRNT-CODE
+    ```
+
+2.  Build and launch the container:
+    ```bash
+    docker-compose build
+    docker-compose run grnt-code
+    ```
+
+---
+
+## 🛠️ Technology Stack
+
+| Component | Technology |
+|----------|------------|
+| **Engine** | Ollama (Python API) |
+| **CLI Framework** | Click |
+| **Terminal UI** | Rich |
+| **Infrastructure** | Docker, Docker Compose |
+| **Persistence** | JSON History |
+
+---
+
+## 🤝 Contributing
+
+**Important:** This project enforces a strict Docker-only workflow.
+
+1.  **Fork & Branch**: Create a new branch for your feature.
+2.  **Develop**: Test all changes inside the container.
+3.  **Commit & Push**: Submit your changes via Pull Request.
+
+---
+
+## 📝 License
+
+This project is open source and available under the MIT License.
+
+---
+
+<div align="center">
+  <sub>Developed by dragonpilee</sub><br>
+  <sub>Functional • Direct • Local</sub>
+</div>
